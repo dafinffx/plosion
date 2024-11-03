@@ -86,18 +86,17 @@
             'onfailure': onFailure
         });
     }
-
-    window.onload = function() {
-        renderButton();
-    };
-
+   
     async function handleLogin (){
         account.create0Auth2Session(
             'google',
-            'http://rizqanaldafin.my.id/',
-            'http://rizqanaldafin.my.id/fail'
+            'https://rizqanaldafin.my.id/',
+            'https://rizqanaldafin.my.id/fail'
         )
     }
+    window.onload = function() {
+        renderButton();
+    };
 </script>
 </body>
 </html>
