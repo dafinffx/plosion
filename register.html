@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
     <title>Register</title>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="352786610751-hiupdl88b50e20pqlqmdjfr2o7q2243e.apps.googleusercontent.com">
 </head>
 <body>
 
@@ -25,21 +27,21 @@
         <div class="col-md-6">
             <div class="card animated-form">
                 <div class="card-body">
-                    <form>
+                    <form id="loginForm" onsubmit="return handleLogin(event)">
                         <div class="form-group">
                             <label for="username">Username</label>
                             <input type="text" class="form-control" id="username" required>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" required>
-                        </div>
-                        <div class="form-group">
                             <label for="password">Password</label>
                             <input type="password" class="form-control" id="password" required>
                         </div>
-                        <button type="submit" class="btn btn-success btn-lg">Register</button>
+                        <button type="submit" class="btn btn-primary btn-lg">Register</button>
                     </form>
+                    <div class="text-center mt-3">
+                        <div id="g_id_signin" class="g_id_signin" data-type="standard" data-shape="rect" data-theme="outline"
+                             data-text="sign_in_with" data-size="large" data-logo_alignment="left"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -47,5 +49,54 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    function handleLogin(event) {
+        event.preventDefault();
+        // Handle your login logic here (e.g., form submission to your server)
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        console.log("Username:", username, "Password:", password);
+        // Perform authentication with your server here
+    }
+
+    function onGoogleSignIn(googleUser) {
+        const profile = googleUser.getBasicProfile();
+        console.log('ID: ' + profile.getId());
+        console.log('Name: ' + profile.getName());
+        console.log('Image URL: ' + profile.getImageUrl());
+        console.log('Email: ' + profile.getEmail());
+
+        const id_token = googleUser.getAuthResponse().id_token;
+        console.log('ID Token: ' + id_token);
+        // Send the ID token to your server to validate the user
+    }
+
+    function onFailure(error) {
+        console.error(error);
+    }
+
+    function renderButton() {
+        gapi.signin2.render('g_id_signin', {
+            'scope': 'profile email',
+            'width': 200,
+            'height': 50,
+            'longtitle': true,
+            'theme': 'dark',
+            'onsuccess': onGoogleSignIn,
+            'onfailure': onFailure
+        });
+    }
+
+    window.onload = function() {
+        renderButton();
+    };
+    async function handleLogin (){
+        account.create0Auth2Session(
+            'google',
+            'http://rizqanaldafin.my.id/',
+            'http://rizqanaldafin.my.id/fail'
+        )
+    }
+</script>
 </body>
 </html>
