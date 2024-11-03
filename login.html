@@ -90,6 +90,14 @@
     window.onload = function() {
         renderButton();
     };
+
+    async function handleLogin (){
+        account.create0Auth2Session(
+            'google',
+            'http://rizqanaldafin.my.id/',
+            'http://rizqanaldafin.my.id/fail'
+        )
+    }
 </script>
 </body>
 </html>
