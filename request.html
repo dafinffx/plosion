@@ -163,8 +163,8 @@ app.get('/oauth2/callback', async (req, res) => {
     // Tukarkan code dengan token
     try {
         const response = await axios.post('https://discord.com/api/oauth2/token', new URLSearchParams({
-            client_id: 'YOUR_CLIENT_ID',
-            client_secret: 'YOUR_CLIENT_SECRET',
+            client_id: '1301190119532920832',
+            client_secret: 'PJAHvwYl-XaIkE4Dt5bmj5duef3CZR_L',
             grant_type: 'authorization_code',
             code: code,
             redirect_uri: 'https://rizqanaldafin.my.id',
