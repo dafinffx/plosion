@@ -3,9 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Request</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="icon" href="img/request.jpg" type="image/x-icon">
+    <link rel="icon" href="img/request.jpg" type="image/png">
+    <title>Modpack Request</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Custom styles */
+        body {
+            background-color: #f0f4f8; /* Soft background color */
+            font-family: Arial, sans-serif; /* Change font */
+        }
+        .navbar {
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for navbar */
+        }
+        .modpack-request-section {
+            background-color: #ffffff; /* White background for the form */
+            border-radius: 10px; /* Rounded corners */
+            padding: 30px; /* Padding for the form */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+            transition: transform 0.2s ease; /* Transition effect */
+        }
+        .modpack-request-section:hover {
+            transform: scale(1.02); /* Slightly scale up on hover */
+        }
+        h2 {
+            color: #333; /* Darker color for the heading */
+            margin-bottom: 20px; /* Space below heading */
+        }
+        .form-group label {
+            font-weight: bold; /* Bold labels */
+            color: #555; /* Darker label color */
+        }
+        .form-control {
+            border: 1px solid #ccc; /* Light border */
+            border-radius: 5px; /* Slightly rounded corners */
+            transition: border-color 0.3s ease; /* Transition for border color */
+        }
+        .form-control:focus {
+            border-color: #687077; /* Change border color on focus */
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Shadow effect on focus */
+        }
+        .btn-success {
+            background-color: #b43822; /* Green background */
+            border: none; /* No border */
+            transition: background-color 0.3s ease, transform 0.2s ease; /* Transition for hover effect */
+        }
+        .btn-success:hover {
+            background-color: #218838; /* Darker green on hover */
+            transform: translateY(-2px); /* Slight lift on hover */
+        }
+        @media (max-width: 768px) {
+            .modpack-request-section {
+                padding: 20px; /* Less padding on small screens */
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1></h1>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html">X - Plosion S.</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container modpack-request-section mt-5">
+        <h2 class="text-center mb-4">Modpack Request</h2>
+        <form id="modpackRequestForm">
+            <div class="form-group">
+                <label for="clientVersion">Client SA:MP Version</label>
+                <select class="form-control" id="clientVersion">
+                    <option value="R1">R1</option>
+                    <option value="R4">R4</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="details">Details</label>
+                <textarea class="form-control" id="details" rows="4" placeholder="Enter the details of the modpack"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="discordUsername">Discord Username</label>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="discordUsername" placeholder="Enter your Discord username" readonly>
+                    <div class="input-group-append">
+                        <a href="https://discord.com/oauth2/authorize?client_id=1301190119532920832&response_type=code&redirect_uri=https%3A%2F%2Frizqanaldafin.my.id&scope=identify" class="btn btn-primary" target="_blank">Login with Discord</a>
+                    </div>
+                </div>
+            </div>            
+            <div class="form-group">
+                <label for="price">Price</label>
+                <select class="form-control" id="price">
+                    <option value="40000">40,000</option>
+                    <option value="30000">30,000 ( Jika duit anda pas 30K )</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-success">Submit / Kirim </button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('modpackRequestForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Collect form data
+            const clientVersion = document.getElementById('clientVersion').value;
+            const details = document.getElementById('details').value;
+            const discordUsername = document.getElementById('discordUsername').value;
+            const price = document.getElementById('price').value;
+
+            // Prepare the payload
+            const payload = {
+                content: `Request Modpack X-Plosion S\n**Client:** ${clientVersion}\n**Details:** ${details}\n**Discord Username:** ${discordUsername}\n**Price:** ${price}`
+            };
+
+            // Send the data to Discord webhook
+            fetch('https://discord.com/api/webhooks/1273987541544079503/XC_PJZsHb6gSRqUpqX_9Q7mVO4tNii3EIuRjulinEn8Us2M2ZAKFIjCvEIcMvS2zXNXv', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Request submitted successfully!');
+                    // Optionally, reset the form
+                    document.getElementById('modpackRequestForm').reset();
+                } else {
+                    alert('There was an error submitting your request.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error submitting your request.');
+            });
+        });
+        const express = require('express');
+        const express = require('express');
+        const express = require('express');
+const axios = require('axios');
+const app = express();
+const PORT = 5500; // Sesuaikan dengan port yang kamu inginkan
+
+app.get('/oauth2/callback', async (req, res) => {
+    const code = req.query.code; // Ambil code dari query parameter
+
+    // Tukarkan code dengan token
+    try {
+        const response = await axios.post('https://discord.com/api/oauth2/token', new URLSearchParams({
+            client_id: 'YOUR_CLIENT_ID',
+            client_secret: 'YOUR_CLIENT_SECRET',
+            grant_type: 'authorization_code',
+            code: code,
+            redirect_uri: 'https://rizqanaldafin.my.id',
+        }), {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+        });
+
+        const accessToken = response.data.access_token;
+        // Lakukan sesuatu dengan accessToken, seperti mengambil informasi pengguna
+        res.send('Login successful!');
+    } catch (error) {
+        console.error('Error fetching access token:', error);
+        res.send('Error during authentication');
+    }
+});
+
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+});
+
+    </script>
 </body>
 </html>
