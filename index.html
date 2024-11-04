@@ -4,28 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="img/a.png" type="image/x-icon">
+    <link rel="icon" href="img/a.png" type="image/png">
     <title>Welcome to My Store</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">X - Plosion S.</a>
-        <div class="collapse navbar-collapse">
+        <a class="navbar-brand" href="index.html">X - Plosion S.</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="register.html">Register</a></li>
-                <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                <div class="help-button">
+                    <a href="https://youtu.be/uFYbDKgZqQo" target="_blank">
+                        <div class="help-button">
+                            <div class="help-icon">HELP</div>
+                        </div>                                             
+                    </a>
+                </div>
+                
             </ul>
         </div>
     </nav>
 
     <div class="container text-center mt-5 welcome-section">
-        <h1 class="welcome-title">Welcome to My Store!</h1>
-        <p class="welcome-subtitle">Explore the best products just for you.</p>
-        <a href="shop.html" class="btn btn-primary btn-lg">Start Shopping</a>
+        <h1 class="welcome-title">X-Plosion Syndicate | Store!</h1>
+        <p class="welcome-subtitle">Tetap lah jadi pesuter , jangan pesatir.</p>
+        <a href="shop.html" class="btn btn-primary btn-lg">Buy Modpack</a>
+        <a href="request.html" class="btn btn-primary btn-lg">Request Modpack</a>
+        <a href="helper.html" class="btn btn-primary btn-lg">Help List !!</a>
     </div>
+    
 
-    <script>
-        // You can add any JavaScript here if needed
-    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="server.js"></script>
 </body>
+
+</html>
